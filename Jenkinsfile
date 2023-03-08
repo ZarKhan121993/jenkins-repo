@@ -1,6 +1,10 @@
 pipeline {
     agent {
-         label "built-in" 
+        label {
+            label "slave1"
+        customWorkspace "/mnt/git"
+        }
+        
     }
 
     stages {
