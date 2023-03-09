@@ -1,12 +1,14 @@
 pipeline {
-    agent any
+    agent {
+    label "slave2"
+    }
 
     stages {
         stage ('Compile Stage') {
 
             steps {
-                
-                    sh 'mvn clean compile'
+                    sh "sudo yum install maven -y" 
+                    sh 'sudo mvn clean compile'
                 }
             
         }
@@ -15,7 +17,7 @@ pipeline {
 
             steps {
                 
-                    sh 'mvn test'
+                    sh 'sudo mvn test'
                 }
             
         }
@@ -24,7 +26,7 @@ pipeline {
         stage ('Install Stage') {
             steps {
                 
-                    sh 'mvn install'
+                    sh 'sudo mvn install'
                 }
             
         }
